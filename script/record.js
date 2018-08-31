@@ -8,7 +8,7 @@ const repeat = 1;
 const resFileName = 'result.csv'
 const resFilePath = path.join(__dirname, resFileName);
 // initialize
-fs.writeFileSync(resFile, "count,response time[msec]\n");
+fs.writeFileSync(resFilePath, "count,response time[msec]\n");
 
 function writeLine(filename, line){
     let filePath = path.join(__dirname, filename);
@@ -21,6 +21,7 @@ function writeLine(filename, line){
 async function callFunction(){
     const options = {
         uri: endpoint,
+        method: "POST",
         body: {
             message: "test",
         },
@@ -37,7 +38,7 @@ async function testFunction(){
     for(let i = 0; i < repeat; i++){
         try{
             const msec = await callFunction();
-            writeLine(`${i},${msec}`);
+            writeLine(resFileName, `${i},${msec}`);
         }catch(err){
             console.log(err);
         }
