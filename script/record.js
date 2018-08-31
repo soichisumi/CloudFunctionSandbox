@@ -5,15 +5,19 @@ let rp = require("request-promise");
 const endpoint = "https://us-central1-fir-test-2fc32.cloudfunctions.net/helloWorld";
 const repeat = 1;
 
+const resFileName = 'result.csv'
+const resFilePath = path.join(__dirname, resFileName);
+// initialize
+fs.writeFileSync(resFile, "count,response time[msec]\n");
+
 function writeLine(filename, line){
     let filePath = path.join(__dirname, filename);
     fs.appendFileSync(filePath, line+'\n', (err) => {
         console.log(`err: ${err}`);
     });
-}
-const resFileName = 'result.csv'
-const resFilePath = path.join(__dirname, resFileName);
+};
 
+// call function and returns execution time
 async function callFunction(){
     const options = {
         uri: endpoint,
@@ -24,7 +28,7 @@ async function callFunction(){
     };
     const t1 = new Date().getMilliseconds();
     const res = await rp(options);
-    console.log(res)
+    console.log(res);
     const t2 = new Date().getMilliseconds();
     return t2-t1;
 }
