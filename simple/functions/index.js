@@ -1,6 +1,7 @@
 const functions = require('firebase-functions');
 
-exports.helloWorld = functions.https.onRequest((request, response) => {
+exports.helloWorld = functions.region('asia-northeast1')
+                                .https.onRequest((request, response) => {
     if(request.body.message === undefined){
         response.status(400)
             .json({message: "no message defined"})
