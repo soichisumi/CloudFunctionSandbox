@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "async": "^2.6.1",
-    "babel-runtime": "^6.26.0",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.3",
     "chalk": "^2.4.1",

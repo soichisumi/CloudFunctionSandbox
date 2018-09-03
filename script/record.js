@@ -2,8 +2,8 @@ let fs = require("fs");
 let path = require("path");
 let rp = require("request-promise");
 
-const endpoint = "https://us-central1-fir-test-2fc32.cloudfunctions.net/helloWorld";
-const repeat = 5;
+const endpoint = "https://us-central1-fir-test-2fc32.cloudfunctions.net/helloWorldMiddle";
+const repeat = 10;
 
 const resFileName = 'result.csv'
 const resFilePath = path.join(__dirname, resFileName);
